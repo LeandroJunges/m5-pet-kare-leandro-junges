@@ -7,7 +7,7 @@ class Sex(models.TextChoices):
 
 class Pet(models.Model):
 
-    name = models.CharField(max_length=50),
+    name = models.CharField(max_length=50)
     age = models.IntegerField()
     weight = models.FloatField()
     sex = models.CharField(max_length=20, choices=Sex.choices, default=Sex.DEFAULT, )
@@ -15,11 +15,11 @@ class Pet(models.Model):
     group = models.ForeignKey(
         "groups.Group",
         on_delete=models.CASCADE,
-        related_name="groups"
+        related_name="pets"
     )
-    trait = models.ManyToManyField(
+    traits = models.ManyToManyField(
         "traits.Trait",
-        related_name="trait"
+        related_name="pets"
     )
 
 

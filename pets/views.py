@@ -30,6 +30,8 @@ class PetDetailView(APIView):
         pet = get_object_or_404(Pet, id = pet_id)
         serializer = PetSerializer(pet, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
+        
+        serializer.save()
 
         return Response(serializer.data)
 
